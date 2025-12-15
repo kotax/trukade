@@ -1,6 +1,9 @@
 //! By convention, root.zig is the root source file when making a library.
 const std = @import("std");
 
+const suits = enum { SPADES, HARTS, CLUBS, DIAMONDS };
+const card_val = enum { VAL_A, VAL_2, VA_3, VAL_4, VAL_5, VAL_6, VAL_7, VAL_8, VAL_9, VAL_J, VAL_Q, VAL_K };
+
 const card = struct {
     number: u8,
 };
