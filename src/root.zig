@@ -1,12 +1,27 @@
 //! By convention, root.zig is the root source file when making a library.
 const std = @import("std");
 
-const suits = enum { SPADES, HARTS, CLUBS, DIAMONDS };
-const card_val = enum { VAL_A, VAL_2, VA_3, VAL_4, VAL_5, VAL_6, VAL_7, VAL_8, VAL_9, VAL_J, VAL_Q, VAL_K };
+const Suit = enum { SPADES, HARTS, CLUBS, DIAMONDS };
+const CardVal = enum { VAL_A, VAL_2, VA_3, VAL_4, VAL_5, VAL_6, VAL_7, VAL_8, VAL_9, VAL_J, VAL_Q, VAL_K };
 
-const card = struct {
-    number: u8,
+const Entity = struct {
+    id: u16,
+    componentSignature: std.bit_set.ArrayBitSet(u16, 20),
+    //flags: std.bit_set.ArrayBitSet(u16, 20),
 };
+
+const Card = struct {
+    cardVal: CardVal,
+    suit: Suit,
+};
+
+const EntityManager = struct {
+    entities: []Entity,
+    //
+    cards: []Card,
+};
+
+const Hand = struct {};
 
 pub fn bufferedPrint() !void {
     // Stdout is for the actual output of your application, for example if you
